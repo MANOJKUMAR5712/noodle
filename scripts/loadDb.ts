@@ -17,8 +17,6 @@ const cnData : string[] = [
     "https://en.wikipedia.org/wiki/Christopher_Nolan",
     "https://www.imdb.com/name/nm0634240/",
     "https://www.rottentomatoes.com/celebrity/christopher_nolan",
-    "https://x.com/nolananalyst?lang=en",
-    "https://en.wikipedia.org/wiki/Christopher_Nolan_filmography"
 ]
 
 type similarityMetric = 'dot_product' | 'cosine' | 'euclidean' ; 
@@ -35,7 +33,7 @@ const splitter = new RecursiveCharacterTextSplitter({
 const createCollection = async (SimilarityMetric : similarityMetric = 'dot_product')=>{
     const res = await db.createCollection(ASTRA_DB_COLLECTION as string,{
         vector : {
-            dimension : 1536,
+            dimension : 1536 ,
             metric : SimilarityMetric
         } 
     })
@@ -60,7 +58,7 @@ const scrapePage = async (url : string)=>{
         }
     })
 
-    return (await loader.scrape())?.replaceAll(/<[^>]*>?/gm,'');;
+    return (await loader.scrape())?.replaceAll(/<[^>]*>?/gm,'');
 }
 
 
@@ -76,11 +74,11 @@ const loadSampleData = async ()=>{
                 contents : {parts : [{text:chunk}]},
                 config : {
                     taskType : 'RETRIEVAL_DOCUMENT'	,
-                    outputDimensionality : 1536
+                    outputDimensionality : 1536 
                 }
             })
 
-            const vector = embedResult.embeddings?.values;
+            const vector = embedResult.embeddings?.[0].values;
             const res = await collection.insertOne({
                 $vector : vector,
                 text : chunk
@@ -89,6 +87,8 @@ const loadSampleData = async ()=>{
         }
     }
 }
+
+// loadSampleData();
 
 createCollection().then(()=> loadSampleData()) ;
 
