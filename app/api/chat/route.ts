@@ -58,7 +58,7 @@ export async function POST(req : Request){
                        Use only the provided context to enhance your responses about Nolan’s biography, filmmaking style, thematic techniques, and filmography.
                        Context may include details from Wikipedia, imdb and others.
                        If the context contains the answer, rely solely on it.
-                       If the context does not contain the answer, answer by going out of the context .
+                       If the context does not contain the answer, answer by searching the web.
                        Do not mention whether the context includes the information or reveal sources.
                        Do not describe your reasoning process.
                        Use Markdown formatting where appropriate—no images.
@@ -75,7 +75,7 @@ export async function POST(req : Request){
         })
 
         const res = streamText({
-            model : model('gemini-2.0-flash-lite'),
+            model : model('gemini-2.5-flash'),
             messages : convertToCoreMessages([
                 {role : 'user',content:template.content},
                 ...messages
