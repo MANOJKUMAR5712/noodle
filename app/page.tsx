@@ -55,10 +55,12 @@ export default function Home() {
           ) : (
             <>
               {/* Render messages here */}
-              {messages.map((message,index)=>{
-                <Bubble key={`message-${index}`} message = {message}/>
-              })}
-              {(status === "submitted" || "streaming") && <LoadingBubble/>}
+              
+              {messages.map((message)=>(
+                <Bubble key={`message-${message.id}`} message = {message}/>
+              ))}
+
+              {(status === "submitted") && <LoadingBubble/>}
             </>
           )}
         </div>
@@ -77,7 +79,7 @@ export default function Home() {
           />
           <button
             type="submit"
-            disabled={status !== 'ready'}
+            disabled={status == 'submitted'}
             className="px-4 sm:px-6 py-2 bg-gradient-to-r from-red-300 to-red-400 text-white font-medium rounded-full sm:rounded-full border-gray-500 disabled:bg-red-200 text-sm sm:text-base"
           >
             Send
