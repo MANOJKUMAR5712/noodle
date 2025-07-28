@@ -45,7 +45,7 @@ export async function POST(req : Request){
 
             docContext = JSON.stringify(docsMap);
 
-            console.log(docsMap);
+            // console.log(docsMap);
 
 
         } catch (error) {
@@ -58,7 +58,7 @@ export async function POST(req : Request){
                        Use only the provided context to enhance your responses about Nolan’s biography, filmmaking style, thematic techniques, and filmography.
                        Context may include details from Wikipedia, imdb and others.
                        If the context contains the answer, rely solely on it.
-                       If the context is silent on the subject, answer based on your knowledge.
+                       If the context does not contain the answer, answer by going out of the context .
                        Do not mention whether the context includes the information or reveal sources.
                        Do not describe your reasoning process.
                        Use Markdown formatting where appropriate—no images.

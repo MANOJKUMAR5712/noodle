@@ -44,7 +44,7 @@ export default function Home() {
       <section className="w-full max-w-2xl flex-grow flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden mt-24 mb-4">
         
         {/* Messages Section */}
-        <div className="flex-1 p-4 overflow-y-auto bg-gradient-to-b from-blue-100 via-blue-200 to-red-300 text-sm sm:text-base">
+        <div className="flex-1 p-4 overflow-y-scroll bg-gradient-to-b from-blue-100 via-blue-200 to-red-300 text-sm sm:text-base">
           {noMessages ? (
             <>
               <div className="flex items-center justify-center h-full text-red-800 text-center">
@@ -55,12 +55,12 @@ export default function Home() {
           ) : (
             <>
               {/* Render messages here */}
-              
               {messages.map((message)=>(
                 <Bubble key={`message-${message.id}`} message = {message}/>
               ))}
 
               {(status === "submitted") && <LoadingBubble/>}
+             
             </>
           )}
         </div>
@@ -75,7 +75,7 @@ export default function Home() {
             value={input}
             onChange={handleInputChange}
             placeholder="Ask me something..."
-            className="flex-grow px-4 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none focus:outline-none focus:ring focus:ring-red-300 text-black text-sm sm:text-base"
+            className="flex-grow px-4 py-2 rounded-full sm:rounded-full focus:outline-none focus:ring focus:ring-red-300 text-black text-sm sm:text-base"
           />
           <button
             type="submit"
