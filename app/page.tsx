@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <main
-      className="relative flex flex-col items-center justify-start min-h-screen bg-center bg-cover bg-no-repeat"
+      className="relative flex flex-col items-center justify-start min-h-screen bg-center bg-cover bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url(${bg.src})` }}
     >
       {/* Logo fixed to top-left corner */}
@@ -35,7 +35,7 @@ export default function Home() {
           width={60}
           height={60}
           alt="Noodle logo"
-          className="w-14 sm:w-16 md:w-20 h-auto object-contain"
+          className="w-14 sm:w-16 md:w-20 h-auto object-contain fixed"
           priority
         />
       </div>
@@ -49,6 +49,8 @@ export default function Home() {
             <>
               <div className="flex items-center justify-center h-full text-red-800 text-center">
                 Noodle is up and ready...
+                <br></br>
+                <br></br>
               </div>
               <PromptSuggestion onPromptClick={handlePrompt}/>
             </>

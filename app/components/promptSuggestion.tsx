@@ -4,9 +4,9 @@ const PromptSuggestion = ({onPromptClick}) => {
 
 const prompts = [
     "Who is cristopher nolan ?",
-    "What movies did he make ?",
+    "What movies did he direct ?",
     "How many awards he have won ?",
-    "What is the highest rated movies of his filmography ?"
+    "What are the highest rated movies of his filmography ?"
 ]
 
   return (
